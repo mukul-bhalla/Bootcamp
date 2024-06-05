@@ -1,5 +1,7 @@
 package Day_1;
 
+import java.util.Scanner;
+
 public class Day_1 {
 
     public static int fact(int n) {
@@ -26,26 +28,48 @@ public class Day_1 {
         return n % 10 + RecursiveSumOfDigit(n / 10);
     }
 
+    public static void RecursiveSumOfDigit2(int n, int sum) {
+        if (n == 0) {
+            System.out.println(sum);
+            return;
+        }
+        sum += n % 10;
+        RecursiveSumOfDigit2(n / 10, sum);
+    }
+
+    public static boolean palindromeOrNot(String str, int start, int end) {
+        if (start >= end) {
+            return true;
+        }
+        return (str.charAt(start) == str.charAt(end) ? true : false) && palindromeOrNot(str, start + 1, end - 1);
+    }
+
+    public static int armstrongOrNot(int num) {
+        if (num == 0) {
+            return 0;
+        }
+        return (num % 10) * (num % 10) * (num % 10) + armstrongOrNot(num / 10);
+
+    }
+
     public static void main(String[] args) {
-        // Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        // String str = sc.next();
+        // System.out.println(palindromeOrNot(str, 0, str.length() - 1));
 
-        System.out.println(fact(5));
-        // System.out.println(sumOfDigit(12345));
-        System.out.println(RecursiveSumOfDigit(13331));
+        // System.out.println(fact(5));
 
-        // int num = 1234;
-        // String str = Integer.toString(num);
-        // char charArr[] = str.toCharArray();
-        // char temp = charArr[0];
-        // charArr[0] = charArr[str.length() - 1];
-        // charArr[str.length() - 1] = temp;
+        // System.out.println(RecursiveSumOfDigit(13331));
 
-        // String ans = new String(charArr);
+        // RecursiveSumOfDigit2(13331, 0);
 
-        // int res = Integer.parseInt(ans);
-
-        // System.out.println(res);
-
+        int num = sc.nextInt();
+        int temp = armstrongOrNot(num);
+        if (num == temp) {
+            System.out.println("It is an armstrong number");
+        } else {
+            System.out.println("It is not an armstrong number");
+        }
     }
 
 }
