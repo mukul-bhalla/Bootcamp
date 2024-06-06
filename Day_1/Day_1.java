@@ -53,9 +53,15 @@ public class Day_1 {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        // String str = sc.next();
-        // System.out.println(palindromeOrNot(str, 0, str.length() - 1));
+        try (Scanner sc = new Scanner(System.in)) {
+            int num = sc.nextInt();
+            int temp = armstrongOrNot(num);
+            if (num == temp) {
+                System.out.println("It is an armstrong number");
+            } else {
+                System.out.println("It is not an armstrong number");
+            }
+        }
 
         // System.out.println(fact(5));
 
@@ -63,13 +69,6 @@ public class Day_1 {
 
         // RecursiveSumOfDigit2(13331, 0);
 
-        int num = sc.nextInt();
-        int temp = armstrongOrNot(num);
-        if (num == temp) {
-            System.out.println("It is an armstrong number");
-        } else {
-            System.out.println("It is not an armstrong number");
-        }
     }
 
 }

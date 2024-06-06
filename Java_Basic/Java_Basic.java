@@ -8,9 +8,10 @@ public class Java_Basic {
     public static void main(String[] args) {
         System.out.println("Hello");
         int a, b;
-        Scanner sc = new Scanner(System.in);
-        a = sc.nextInt();
-        b = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            a = sc.nextInt();
+            b = sc.nextInt();
+        }
         System.out.println(add(a, b));
 
     }
