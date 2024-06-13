@@ -4,21 +4,22 @@ import java.util.ArrayList;
 
 class Stack<T> {
     ArrayList<T> arr;
-    int capacity;
+    int size;
     int top;
 
-    Stack(int capacity) {
-        arr = new ArrayList<T>(capacity);
+    Stack(int size) {
+        arr = new ArrayList<T>(size);
         top = -1;
-        this.capacity = capacity;
+        this.size = size;
     }
 
-    public void peek() {
-        System.out.println(arr.get(top));
+    public void peek(int pos) {
+        int idx = top - pos + 1;
+        System.out.println(arr.get(idx));
     }
 
     public void push(T element) {
-        if (top < capacity - 1) {
+        if (top < size - 1) {
             arr.add(top + 1, element);
             System.out.println(element + " element pushed");
             top++;
@@ -27,15 +28,16 @@ class Stack<T> {
         }
     }
 
-    public void pop() {
-
+    public T pop() {
+        T x = null;
         if (top == -1) {
             System.out.println("Buffer Underflow !!");
         } else {
-            T element = arr.remove(top);
+            x = arr.remove(top);
             top--;
-            System.out.println("Popped " + element);
+            System.out.println("Popped " + x);
         }
+        return x;
 
     }
 
@@ -44,7 +46,7 @@ class Stack<T> {
     }
 
     int getSize() {
-        return top;
+        return top + 1;
     }
 
 }
@@ -57,13 +59,17 @@ public class Day_8_Stack {
         stack.push(300);
         stack.push(400);
         stack.push(500);
-        stack.peek();
-        stack.pop();
-        stack.peek();
-        stack.pop();
-        stack.peek();
-        stack.pop();
+        System.out.println(stack.pop());
+        stack.push(500);
+        stack.peek(1);
+        System.out.println("Size is = " + stack.getSize());
         stack.pop();
         stack.pop();
+        stack.pop();
+        System.out.println("Is stack empty ? :" + stack.isEmpty());
+        stack.pop();
+        stack.pop();
+        ;
+
     }
 }
